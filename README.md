@@ -17,21 +17,23 @@ The workflow is: **read the README → run the examples → make the tests green
 
 ## Prerequisites
 
-- Node.js ≥ 20 (check with `node --version`)
-- npm (ships with Node)
+- [mise](https://mise.jdx.dev/) (version manager — like `pyenv` / `uv` for toolchains)
+- Node.js 20 (pinned in `mise.toml`; npm ships with Node)
 
-If Node is older, install it via [nvm](https://github.com/nvm-sh/nvm) — this repo has a `.nvmrc` so `nvm use` picks the right version.
+```bash
+mise install    # installs the Node version from mise.toml
+mise trust      # first time only — allow this project's config
+```
 
 ## Getting started
 
 ```bash
-npm install                                            # Python analogue: pip install -r requirements.txt
+npm install                                            # Python analogue: uv sync / pip install -r requirements.txt
 npm run ex chapters/01-js-basics/examples/hello.ts     # run a single .ts file
 npm test                                               # run all tests once
 npm run test:watch                                     # watch mode (re-runs on save)
 npm run typecheck                                      # static type check across repo
 ```
-
 ## Roadmap
 
 | # | Chapter | Topic |

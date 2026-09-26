@@ -1,0 +1,6 @@
+{
+  // Learning mode: type exercises yourself — no AI ghost-text spoilers.
+  "editor.inlineSuggest.enabled": false,
+  "cursor.completions.enabled": false,
+  "cursor.cpp.enablePartialAccepts": false
+}

@@ -1,0 +1,7 @@
+[tools]
+# Match engines.node (>=20). Pin major so installs stay reproducible.
+node = "20"
+
+[env]
+# So `tsx`, `vitest`, `tsc` work without `npx` / `npm run` prefixes.
+_.path = ["{{config_root}}/node_modules/.bin"]

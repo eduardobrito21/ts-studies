@@ -1,27 +1,35 @@
 # 00 — Setup
 
-If `npm install` at the repo root worked and `node --version` prints `v20.x.x` or higher, you're done. Jump to [chapter 01](../01-js-basics/README.md).
+This repo uses [mise](https://mise.jdx.dev/) to pin the Node version (same role as `pyenv` / `uv` for Python).
 
-Otherwise, read on.
+If `mise install` + `npm install` already worked and `node --version` prints `v20.x.x`, jump to [chapter 01](../01-js-basics/README.md).
 
-## Install Node.js
-
-Node is the JS runtime. Think of it as the CPython of JavaScript — the thing that actually executes your code outside a browser.
-
-**macOS / Linux:** install [nvm](https://github.com/nvm-sh/nvm) (Node Version Manager, like `pyenv`). Then from the repo root:
+## Install mise (once)
 
 ```bash
-nvm install        # reads .nvmrc, installs Node 20
-nvm use            # activates it
+curl https://mise.run | sh
+# then add the shell hook — mise prints the line for your shell
 ```
 
-**Windows:** use the official installer from [nodejs.org](https://nodejs.org/), pick the LTS (≥ 20).
+Or via Homebrew: `brew install mise`.
+
+## Install Node for this project
+
+From the repo root:
+
+```bash
+mise install          # reads mise.toml → installs Node 20
+mise trust            # allow this project's mise.toml (first time only)
+```
+
+`cd` into the repo (with the mise shell hook enabled) and `node` / `npm` resolve to the pinned version automatically — no `nvm use` / activate step.
 
 Verify:
 
 ```bash
-node --version    # v20.x.x or higher
+node --version        # v20.x.x
 npm --version
+which node            # should be under ~/.local/share/mise/...
 ```
 
 ## Install project dependencies
@@ -30,31 +38,33 @@ npm --version
 npm install
 ```
 
-This reads `package.json`, downloads everything into `node_modules/`, and writes `package-lock.json`. Python analogy: `pip install -r requirements.txt` inside an auto-created venv. No need to activate anything — `node_modules/` is per-directory, so you're automatically "in" it when you run commands from this repo.
+This reads `package.json`, downloads everything into `node_modules/`, and writes `package-lock.json`. Python analogue: `uv sync` / `pip install -r requirements.txt` inside an auto-created venv. No need to activate anything — `node_modules/` is per-directory.
+
+`mise.toml` also puts `node_modules/.bin` on your PATH, so after install you can run `tsx`, `vitest`, and `tsc` directly.
 
 ## Run your first TypeScript file
 
-This repo has a script alias `ex` that runs any `.ts` file using [`tsx`](https://github.com/privatenumber/tsx). `tsx` is to `.ts` what `python` is to `.py` — you don't pre-compile, you just run.
-
 ```bash
 npm run ex chapters/01-js-basics/examples/hello.ts
+# or: tsx chapters/01-js-basics/examples/hello.ts
 ```
 
 You should see `Hello, world!`. If you do, you're set.
 
 ## Editor setup
 
-Use [VS Code](https://code.visualstudio.com/). TypeScript support is built in — no extensions required to start. It's the same experience as VS Code + Pylance for Python.
+Use [VS Code](https://code.visualstudio.com/) or Cursor. TypeScript support is built in — no extensions required to start. Same experience as VS Code + Pylance for Python.
 
 Optional but nice:
-- **Error Lens** — shows type errors inline next to the code (like ruff's inline hints).
-- **Vitest** — gutter icons to run individual tests, like the pytest extension.
+- **Error Lens** — type errors inline (like ruff hints)
+- **Vitest** — gutter icons to run individual tests
 
-Open the repo folder in VS Code and type errors will appear instantly as you edit. No configuration needed.
+Open the repo folder and type errors appear as you edit.
 
-## Key commands (memorize these)
+## Key commands
 
 ```bash
+mise install                # install pinned Node (once / after mise.toml changes)
 npm install                 # install deps (once per fresh clone / after deps change)
 npm run ex <path/to.ts>     # run a TS file — your main workhorse
 npm test                    # run all vitest tests once
