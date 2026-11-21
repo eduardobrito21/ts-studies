@@ -18,7 +18,7 @@ Or via Homebrew: `brew install mise`.
 From the repo root:
 
 ```bash
-mise install          # reads mise.toml → installs Node 20
+mise install          # reads mise.toml → installs Node 26
 mise trust            # allow this project's mise.toml (first time only)
 ```
 
