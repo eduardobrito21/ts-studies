@@ -40,7 +40,7 @@ npm install
 
 This reads `package.json`, downloads everything into `node_modules/`, and writes `package-lock.json`. Python analogue: `uv sync` / `pip install -r requirements.txt` inside an auto-created venv. No need to activate anything — `node_modules/` is per-directory.
 
-`mise.toml` also puts `node_modules/.bin` on your PATH, so after install you can run `tsx`, `vitest`, and `tsc` directly.
+`mise.toml` also puts `node_modules/.bin` on your PATH, so after install you can run `tsx`, `vitest`, and `tsgo` directly.
 
 ## Run your first TypeScript file
 
@@ -69,7 +69,7 @@ npm install                 # install deps (once per fresh clone / after deps ch
 npm run ex <path/to.ts>     # run a TS file — your main workhorse
 npm test                    # run all vitest tests once
 npm run test:watch          # re-run tests on save; use this while solving exercises
-npm run typecheck           # run `tsc --noEmit`; static type check
+npm run typecheck           # run `tsgo --noEmit`; static type check
 ```
 
 When you're ready, head to [chapter 01](../01-js-basics/README.md).

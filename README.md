@@ -62,7 +62,7 @@ Bookmark this. The rest of the repo is just filling it in with detail.
 | `venv` | `node_modules/` (per-project, automatic) | Isolation |
 | `python script.py` | `npx tsx script.ts` (or `npm run ex script.ts`) | Run a file |
 | `pytest` | `vitest` | Test runner |
-| `mypy` / `pyright` | `tsc --noEmit` | Static type check |
+| `mypy` / `pyright` | `tsgo --noEmit` | Static type check |
 | `def foo(x: int) -> str:` | `function foo(x: number): string` | Function signature |
 | `list[int]` | `number[]` or `Array<number>` | Typed array |
 | `dict[str, int]` | `Record<string, number>` | Dict/map |
@@ -91,4 +91,4 @@ Bookmark this. The rest of the repo is just filling it in with detail.
 
 - **ESM only.** `import`/`export` everywhere, no `require`. Chapter 05 explains why.
 - **Strict mode TypeScript.** `noUncheckedIndexedAccess` is on, so `arr[0]` has type `T | undefined`. This surprises Python developers — chapter 02 covers it.
-- **No build step.** `tsx` executes `.ts` files directly. You never run `tsc` to produce `.js` — `tsc` is only used for type-checking.
+- **No build step.** `tsx` executes `.ts` files directly. You never run `tsgo` to produce `.js` — `tsgo` is only used for type-checking.
