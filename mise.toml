@@ -3,5 +3,5 @@
 node = "26"
 
 [env]
-# So `tsx`, `vitest`, `tsgo` work without `npx` / `npm run` prefixes.
+# So `tsx`, `vitest`, `tsc` work without `npx` / `npm run` prefixes.
 _.path = ["{{config_root}}/node_modules/.bin"]
