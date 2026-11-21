@@ -18,7 +18,7 @@ The workflow is: **read the README → run the examples → make the tests green
 ## Prerequisites
 
 - [mise](https://mise.jdx.dev/) (version manager — like `pyenv` / `uv` for toolchains)
-- Node.js 20 (pinned in `mise.toml`; npm ships with Node)
+- Node.js 26 (pinned in `mise.toml`; npm ships with Node)
 
 ```bash
 mise install    # installs the Node version from mise.toml

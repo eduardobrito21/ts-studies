@@ -1,6 +1,6 @@
 [tools]
-# Match engines.node (>=20). Pin major so installs stay reproducible.
-node = "20"
+# Pin the Node.js major version used for development.
+node = "26"
 
 [env]
 # So `tsx`, `vitest`, `tsc` work without `npx` / `npm run` prefixes.
